@@ -9,11 +9,8 @@ defmodule Streams.Router do
   end
 
   scope "/api", Streams do
-    pipe_through :api # Use the default browser stack
+    pipe_through :api
+    resources "/feeds", FeedController, except: [:new, :edit]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Streams do
-  #   pipe_through :api
-  # end
 end
