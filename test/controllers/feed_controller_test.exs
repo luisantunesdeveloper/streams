@@ -21,12 +21,6 @@ defmodule Streams.FeedControllerTest do
       "count" => feed.count}
   end
 
-  test "renders page not found when id is nonexistent", %{conn: conn} do
-    assert_error_sent 404, fn ->
-      get conn, feed_path(conn, :show, -1)
-    end
-  end
-
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, feed_path(conn, :create), feed: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]

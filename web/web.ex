@@ -43,7 +43,7 @@ defmodule Streams.Web do
     quote do
 
       use Phoenix.View, root: "web/templates"
-      
+
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, view_module: 1]
 
