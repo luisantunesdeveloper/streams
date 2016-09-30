@@ -14,6 +14,7 @@ defmodule Streams do
       supervisor(Streams.Endpoint, []),
       # Start your own worker by calling: Streams.Worker.start_link(arg1, arg2, arg3)
       # worker(Streams.Worker, [arg1, arg2, arg3]),
+      supervisor(Streams.Presence, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

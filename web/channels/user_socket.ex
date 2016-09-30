@@ -2,7 +2,7 @@ defmodule Streams.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Streams.RoomChannel
+  channel "stream", Streams.StreamChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,8 +19,15 @@ defmodule Streams.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  # def connect(_params, socket) do
+  #   {:ok, socket}
+  # end
+
+  # web/channels/user_socket.ex
+  def connect(%{"user" => user, "video" => video}, socket) do
+    assign(socket, :user, user)
+    assigns = assign(socket, :video, video)
+    {:ok, assigns}
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
